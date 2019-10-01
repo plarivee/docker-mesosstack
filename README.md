@@ -1,6 +1,6 @@
 # Docker MesosStack
 
-Based on mesos-mini, this adds 
+Based on mesos-mini (https://github.com/apache/mesos/tree/master/support/mesos-mini ), this adds 
 - consul
 - marathon-consul
 - fabio ( to deploy )
@@ -14,11 +14,11 @@ hard coded ports to make apps/docker available in the DiD
 
 # Build image
 ```
-docker build -t mesosstack ./Dockerfile
+docker build -t mesosstack .
 ```
 # To start
 ```
-docker run -d  --rm --privileged -p 8500:8500 -p 5050:5050 -p 5051:5051 -p 8080:8080 -p 30000-30200:30000-30200 --name mesos mesosstack
+docker run -d  --rm --privileged -p 4000:4000 -p 8500:8500 -p 5050:5050 -p 5051:5051 -p 8080:8080 -p 30000-30200:30000-30200 --name mesos mesosstack
 ``` 
 
 
@@ -32,6 +32,9 @@ http://localhost:8080
 
 ## Consul
 http://localhost:8500
+
+## marathon-consul
+http://localhost:4000/health
 
 ## Deployed Apps
 ports 30000 to 30200
