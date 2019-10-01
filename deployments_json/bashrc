@@ -1,0 +1,15 @@
+mdeploylocal () {
+
+  GROUP=""
+  APPNAME=$1
+
+  if [ "$2" != "" ]; then
+    GROUP="$2/"
+  fi
+
+  if [ -f "$APPNAME.json" ]; then
+    curl -v -X PUT -d @$APPNAME.json -H "Content-type: application/json" http://localhost:8080/v2/apps/$GROUP$APPNAME
+  else
+    echo "That app is not in the current dir $APPNAME"
+  fi
+}

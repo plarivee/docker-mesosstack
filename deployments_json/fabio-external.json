@@ -1,0 +1,27 @@
+{
+  "id": "fabio-external",
+  "cpus": 0.3,
+  "mem": 64,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "docker": {
+      "image": "magiconair/fabio:1.5.11-go1.11.5"
+    },
+    "type": "DOCKER"
+  },
+  "env": {
+    "registry_consul_addr": "host.docker.internal:8500",
+    "registry_consul_tagprefix": "external-url-",
+    "registry_consul_register_addr": ":30020",
+    "proxy_addr": ":30021",
+    "ui_addr": ":30020"
+  },
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0,
+    "maximumOverCapacity": 0
+  },
+    "networks": [ { "mode": "host" } ],
+    "requirePorts": true
+
+}
